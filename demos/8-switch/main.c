@@ -74,10 +74,12 @@ switch_interrupt_handler_2()
 
   if(p2val & S1){
     P1OUT |= LED_RED;
+    P1OUT &= ~LED_GREEN;
   }
 
   if(p2val * S2){
     P1OUT |= LED_GREEN;
+    P1OUT &= ~LED_RED;
   }
 }
 
