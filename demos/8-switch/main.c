@@ -90,11 +90,11 @@ __interrupt_vec(PORT1_VECTOR) Port_1(){
   }
 }
 
-/* Switch on P2 */
+/* Switch on P2  */
 void
-__interupt_vec(PORT2_VECTOR) Port_2(){
-  if (P2IFG & TOP_SWITCHES) {
-    P2IFG &= ~TOP_SWITCHES;
-    switch_interrupt_handler()
-      }
+__interrupt_vec(PORT2_VECTOR) Port_2(){
+  if (P2IFG & TOP_SWITCHES) {	      /* did a button cause this interrupt? */
+    P2IFG &= ~TOP_SWITCHES;		      /* clear pending sw interrupts */
+    switch_interrupt_handler();	/* single handler for all switches */
+  }
 }
